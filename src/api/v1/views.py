@@ -1,5 +1,8 @@
-from django.http import HttpResponse
+from rest_framework import viewsets
+from api.v1.serializers import UserSerializer
+from django.contrib.auth.models import User
 
 
-def django_rest_view(request):
-    return HttpResponse('Django Rest Framework')
+class UserViewset(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
